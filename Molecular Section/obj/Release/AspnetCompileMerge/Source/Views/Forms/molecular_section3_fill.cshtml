@@ -1,0 +1,276 @@
+﻿
+@{
+    ViewBag.Title = "molecular_section3_fill";
+}
+
+
+<h2>Molecular Section</h2>
+
+<script>
+
+    $(function () {
+        $("#datesample").datepicker({ minDate: -20, maxDate: "+1M +10D" });
+    });</script>
+<div class="card mb-4" style="width: 1002px;">
+    <div class="card-header">
+        Section D
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("molecular_section3_fill", "Forms", FormMethod.Post, new { id = "__AjaxAntiForgeryForm" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+
+                <input type="hidden" id="prodptided" name="prodptided">
+
+
+
+                
+
+                    <div class="form-group">
+                        <label class="col-form-label">Target 1 (gc/L)</label>
+
+          
+
+                        <input type="text" name="target1gcl" id="target1gcl" class="form-control form-control-user" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Target 2 (gc/L)</label>
+
+                   
+                        <input type="text" name="target2gcl" id="target2gcl" class="form-control form-control-user" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Target 1 limit (gc/L)</label>
+
+                   
+
+                        <input type="text" name="target1limitgcl" id="target1limitgcl" class="form-control form-control-user" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Target 2 limit (gc/L)</label>
+
+                    
+
+                        <input type="text" name="target2limitgcl" id="target2limitgcl" class="form-control form-control-user" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Target 1 presence/absence</label>
+
+
+                        <div class="demo-inline-spacing">
+
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="target1pre_absen1" name="target1pre_absen" class="custom-control-input" value="1">
+                                <label class="custom-control-label" for="target1pre_absen1">Present</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="target1pre_absen2" name="target1pre_absen" class="custom-control-input" value="2">
+                                <label class="custom-control-label" for="target1pre_absen2">Absent</label>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Target 2 presence/absence</label>
+                        <div class="demo-inline-spacing">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="target2pre_absen1" name="target2pre_absen" class="custom-control-input" value="1">
+                                <label class="custom-control-label" for="target2pre_absen1">Present</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="target2pre_absen2" name="target2pre_absen" class="custom-control-input" value="2">
+                                <label class="custom-control-label" for="target2pre_absen2">Absent</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Flow (m3/day)</label>
+                        <input type="text" name="flowm3day" id="flowm3day"  value="NA" disabled readonly class="form-control form-control-user" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Passed QA/QC</label>
+                        <input type="text" name="passqaqc" id="passqaqc" value="NA" disabled readonly  class="form-control form-control-user" />
+                    </div> 
+
+                    <div class="form-group">
+                        <label class="col-form-label">Water Quality variable eg. TSS mg/L</label>
+                        <input type="text" name="waterquality" id="waterquality" value="NA" disabled readonly class="form-control form-control-user" />
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-form-label">Water quality Value eg. mg/L</label>
+                        <input type="text" name="watervalue" id="watervalue" value="NA" disabled readonly class="form-control form-control-user" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Collection method (composite/ grab/other)</label>
+                        <input type="text" name="collectmethod" id="collectmethod" value="BMFS" disabled readonly class="form-control form-control-user" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label">Remarks</label>
+
+
+                        <input type="text" name="note" id="note" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
+                         <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="notecheck" onchange="notecheckfun()" name="notecheck">
+                    <label class="custom-control-label" for="notecheck">None</label>
+                </div>
+                    </div>
+
+
+
+
+            </div>
+        }
+        <div class="text-center">
+            <button id="btsubmit" value="Insert" class="btn btn-primary btn-user btn-block" onclick="BtnClick()">Insert</button>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    
+
+    function notecheckfun() {
+        if (document.getElementById('notecheck').checked) {
+            document.getElementById('note').style.visibility = 'hidden';
+            document.getElementById('realtimepcrn1ddmmyy').val = "97";
+        } else {
+            document.getElementById('note').style.visibility = 'visible';
+            document.getElementById('note').val = "";
+        }
+    }
+
+
+
+
+    $("#tempcoleman").inputmask({ "mask": "99.99" });
+    $("#ctvaluep1").inputmask({ "mask": "99.99" });
+    $("#ctvaluep2").inputmask({ "mask": "99.99" });
+    $("#ctvaluep3").inputmask({ "mask": "99.99" });
+    $("#target1gcl").inputmask({ "mask": "999" });
+    $("#target2gcl").inputmask({ "mask": "999" });
+    $("#target1limitgcl").inputmask({ "mask": "999" });
+    $("#target2limitgcl").inputmask({ "mask": "999" });
+
+
+    function postdata() {
+
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+
+
+
+        var idrlform =
+        {
+          
+            v3target1gcl: $("#target1gcl").val(),
+            v3target2gcl: $("#target2gcl").val(),
+            v3target1limitgcl: $("#target1limitgcl").val(),
+            v3target2limitgcl: $("#target2limitgcl").val(),
+            v3target1pre_absen: $('input[name="target1pre_absen"]:checked').val(),
+            v3target2pre_absen: $('input[name="target2pre_absen"]:checked').val(),
+            v3flowm3day: $("#flowm3day").val(),
+            v3passqaqc: $("#passqaqc").val(),
+            v3waterquality: $("#waterquality").val(),
+            v3watervalue: $("#watervalue").val(),
+            v3collectmethod: $("#collectmethod").val(),
+            v3note: $("#note").val(),
+        }
+        $.ajax({
+            method: "POST",
+            url: "/Forms/molecular_section3_fill",
+
+            data: {
+                __RequestVerificationToken: token,
+                idrlsec3: idrlform
+
+            },
+
+            success: function (response) {
+
+                alert(response.responseText);
+                location.reload(true);
+
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert("Contact Developer Team");
+            }
+        })
+    }
+
+
+    function BtnClick() {
+
+        if (validation()) {
+            postdata();
+        }
+    }
+
+
+    function validation() {
+
+        var val_target1gcl = $("#target1gcl").val();
+        var val_target2gcl = $("#target2gcl").val();
+        var val_target1limitgcl = $("#target1limitgcl").val();
+        var val_target2limitgcl = $("#target2limitgcl").val();
+     
+        var val_note = $("#note").val();
+
+
+
+        if (val_target1gcl == "") {
+            alert("Please Enter Target 1 (gc/L)");
+            return false;
+        }
+        if (val_target2gcl == "") {
+            alert("Please Enter Target 2 (gc/L)");
+            return false;
+        }
+        if (val_target1limitgcl == "") {
+            alert("Please Enter Target 1 limit (gc/L)");
+            return false;
+        }
+        if (val_target2limitgcl == "") {
+            alert("Please Enter Target 2 limit (gc/L)");
+            return false;
+        }
+        if (!$('input[name="target1pre_absen"]').is(':checked')) {
+            alert("Please Check Target 1 presence/absence");
+            return false;
+        }
+        if (!$('input[name="target2pre_absen"]').is(':checked')) {
+            alert("Please Check Target 2 presence/absence ");
+            return false;
+        }
+        if (!$('input[name="notecheck"]').is(':checked') && !val_note.match(/\S/)) {
+            alert("Please Enter Remarks ");
+            return false;
+        }
+        return true;
+    }
+
+</script>

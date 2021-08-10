@@ -1,0 +1,541 @@
+﻿
+@{
+    ViewBag.Title = "molecular_section_fill";
+}
+
+<h2>Molecular Sction</h2>
+
+<script>
+
+    $(function () {
+        $("#datesample").datepicker({ minDate: -20, maxDate: "+1M +10D" });
+    });</script>
+<div class="card mb-4" style="width: 1002px;">
+    <div class="card-header">
+        Section 1 Laboratory Receipt and Assay
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("molecular_section_fill", "Forms", FormMethod.Post, new { id = "__AjaxAntiForgeryForm" }))
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+
+            <input type="hidden" id="prodptided" name="prodptided">
+
+
+            <div class="form-group">
+                <label class="col-form-label">Date receipt</label>
+
+            </div>
+            <div class="form-group">
+
+                <input type="text" name="datesample" id="datesample" class="form-control form-control-user datepicker" placeholder="dd-mm-yyyy" autocomplete="off" />
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-form-label">Time Sample</label>
+
+            </div>
+            <div class="form-group">
+
+                <input type="time" name="timesample" id="timesample" class="form-control form-control-user" />
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Recceived by</label>
+
+            </div>
+            <div class="form-group">
+
+                <input type="text" name="receivedby" id="receivedby" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" autocomplete="off" />
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Temperature logger included</label>
+
+            </div>
+            <div class="demo-inline-spacing">
+
+
+
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="temloggerinclude1" name="temloggerinclude" class="custom-control-input" value="1">
+                    <label class="custom-control-label" for="temloggerinclude1">Yes</label>
+                </div>
+
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="temloggerinclude2" name="temloggerinclude" class="custom-control-input" value="2">
+                    <label class="custom-control-label" for="temloggerinclude2">No</label>
+                </div>
+
+
+
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Temperature of Coleman at which sample is rcvd (°C)</label>
+
+            </div>
+            <div class="form-group">
+                <input type="text" name="tempcoleman" id="tempcoleman" class="form-control form-control-user" />
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Was the sample cold upon receipt</label>
+
+            </div>
+            <div class="demo-inline-spacing">
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="samplereceipt1" name="samplereceipt" class="custom-control-input" value="1">
+                    <label class="custom-control-label" for="samplereceipt1">Yes</label>
+                </div>
+
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="samplereceipt2" name="samplereceipt" class="custom-control-input" value="2">
+                    <label class="custom-control-label" for="samplereceipt2">No</label>
+                </div>
+
+
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">RNA Extraction Date at laboratory (dd:mm:yy)</label>
+
+            </div>
+            <div class="form-group">
+
+                <input type="text" name="rnaextractiondate" id="rnaextractiondate" class="form-control form-control-user" placeholder="dd-mm-yyyy" autocomplete="off" />
+            </div>
+
+            <div class="form-group">
+                <label class="col-form-label">Realtime PCR Processing Date For N1 gene (dd:mm:yy)</label>
+
+            </div>
+            <div class="form-group">
+
+                <input type="text" name="realtimepcrn1ddmmyy" id="realtimepcrn1ddmmyy" class="form-control form-control-user" placeholder="dd-mm-yyyy"  autocomplete="off"/>
+
+
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="realtimepcrn1ddmmyycheck" onchange="realtimepcrn1ddmmyycheckfun()" name="realtimepcrn1ddmmyycheck">
+                    <label class="custom-control-label" for="realtimepcrn1ddmmyycheck">Not Performed</label>
+                </div>
+            
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Realtime PCR Results (For Target 1; N1 gene)</label>
+
+            </div>
+            <div class="demo-inline-spacing">
+
+
+
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="realtimepcrn1gen1" name="realtimepcrn1gen" class="custom-control-input" value="1">
+                    <label class="custom-control-label" for="realtimepcrn1gen1">Positive</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="realtimepcrn1gen2" name="realtimepcrn1gen" class="custom-control-input" value="2">
+                    <label class="custom-control-label" for="realtimepcrn1gen2">Negative</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="realtimepcrn1gen97" name="realtimepcrn1gen" class="custom-control-input" value="97">
+                    <label class="custom-control-label" for="realtimepcrn1gen97">Not Performed</label>
+                </div>
+
+
+
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Ct Value (in Case of Positive result)</label>
+
+            </div>
+            <div class="form-group">
+
+                <input type="text" name="ctvaluep1" id="ctvaluep1" class="form-control form-control-user" />
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Realtime PCR Processing Date For N2 gene (dd:mm:yy)</label>
+
+            </div>
+            <div class="form-group">
+
+                <input type="text" name="realtimepcrn2ddmmyy" id="realtimepcrn2ddmmyy" class="form-control form-control-user" placeholder="dd-mm-yyyy" autocomplete="off" />
+
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="realtimepcrn2ddmmyycheck" onchange="realtimepcrn2ddmmyycheckfun()" name="realtimepcrn2ddmmyycheck">
+                    <label class="custom-control-label" for="realtimepcrn2ddmmyycheck">Not Performed</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Realtime PCR Results (For Target 2; N2 gene)</label>
+
+            </div>
+            <div class="demo-inline-spacing">
+
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="realtimepcrn2gen1" name="realtimepcrn2gen" class="custom-control-input" value="1">
+                    <label class="custom-control-label" for="realtimepcrn2gen1">Positive</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="realtimepcrn2gen2" name="realtimepcrn2gen" class="custom-control-input" value="2">
+                    <label class="custom-control-label" for="realtimepcrn2gen2">Negative</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="realtimepcrn2gen97" name="realtimepcrn2gen" class="custom-control-input" value="97">
+                    <label class="custom-control-label" for="realtimepcrn2gen97">Not Performed</label>
+                </div>
+
+
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Ct Value (in Case of Positive result)</label>
+
+            </div>
+            <div class="form-group">
+
+                <input type="text" name="ctvaluep2" id="ctvaluep2" class="form-control form-control-user" />
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Realtime PCR Processing Date For E gene (dd:mmdd:mm:yy)</label>
+
+            </div>
+            <div class="form-group">
+
+                <input type="text" name="realtimepcrnEgen" id="realtimepcrnEgen" class="form-control form-control-user" placeholder="dd-mm-yyyy" autocomplete="off" />
+
+
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="realtimepcrnEgencheck" onchange="realtimepcrnEgencheckfun()" name="realtimepcrnEgencheck">
+                    <label class="custom-control-label" for="realtimepcrnEgencheck">Not Performed</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Realtime PCR Results (For Target 3; E gene)</label>
+
+            </div>
+            <div class="demo-inline-spacing">
+
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="realtimepcrn3Egen1" name="realtimepcrn3Egen" class="custom-control-input" value="1">
+                    <label class="custom-control-label" for="realtimepcrn3Egen1">Positive</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="realtimepcrn3Egen2" name="realtimepcrn3Egen" class="custom-control-input" value="2">
+                    <label class="custom-control-label" for="realtimepcrn3Egen2">Negative</label>
+                </div>
+
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="realtimepcrn3Egen97" name="realtimepcrn3Egen" class="custom-control-input" value="97">
+                    <label class="custom-control-label" for="realtimepcrn3Egen">Not Performed</label>
+                </div>
+
+
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Ct Value (in Case of Positive result)</label>
+
+            </div>
+            <div class="form-group">
+
+                <input type="text" name="ctvaluep3" id="ctvaluep3" class="form-control form-control-user" />
+            </div>
+
+            <div class="form-group">
+                <label class="col-form-label">Target 1 (gc/L)</label>
+
+            </div>
+            <div class="form-group">
+
+                <input type="text" name="target1gcl" id="target1gcl" class="form-control form-control-user" />
+            </div>
+
+            <div class="form-group">
+                <label class="col-form-label">Target 2 (gc/L)</label>
+
+            </div>
+            <div class="form-group">
+
+                <input type="text" name="target2gcl" id="target2gcl" class="form-control form-control-user" />
+            </div>
+
+            <div class="form-group">
+                <label class="col-form-label">Target 1 limit (gc/L)</label>
+
+            </div>
+            <div class="form-group">
+
+                <input type="text" name="target1limitgcl" id="target1limitgcl" class="form-control form-control-user" />
+            </div>
+
+            <div class="form-group">
+                <label class="col-form-label">Target 2 limit (gc/L)</label>
+
+            </div>
+            <div class="form-group">
+
+                <input type="text" name="target2limitgcl" id="target2limitgcl" class="form-control form-control-user" />
+            </div>
+
+            <div class="form-group">
+                <label class="col-form-label">Target 1 presence/absence</label>
+
+            </div>
+            <div class="demo-inline-spacing">
+
+
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="target1pre_absen1" name="target1pre_absen" class="custom-control-input" value="1">
+                    <label class="custom-control-label" for="target1pre_absen1">Present</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="target1pre_absen2" name="target1pre_absen" class="custom-control-input" value="2">
+                    <label class="custom-control-label" for="target1pre_absen2">Absent</label>
+                </div>
+
+
+
+            </div>
+
+            <div class="form-group">
+                <label class="col-form-label">Target 2 presence/absence</label>
+
+            </div>
+            <div class="demo-inline-spacing">
+
+
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="target2pre_absen1" name="target2pre_absen" class="custom-control-input" value="1">
+                    <label class="custom-control-label" for="target2pre_absen1">Present</label>
+                </div>
+
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="target2pre_absen2" name="target2pre_absen" class="custom-control-input" value="2">
+                    <label class="custom-control-label" for="target2pre_absen2">Absent</label>
+                </div>
+
+           
+            </div>
+
+            <div class="form-group">
+                <label class="col-form-label">Flow (m3/day)</label>
+
+            </div>
+            <div class="form-group">
+
+                <input type="text" name="flowm3day" id="flowm3day" class="form-control form-control-user" />
+            </div>
+
+            <div class="form-group">
+                <label class="col-form-label">Passed QA/QC</label>
+
+            </div>
+            <div class="form-group">
+
+                <input type="text" name="passqaqc" id="passqaqc" class="form-control form-control-user" />
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Water Quality variable eg. TSS mg/L</label>
+
+            </div>
+            <div class="form-group">
+
+                <input type="text" name="waterquality" id="waterquality" class="form-control form-control-user" />
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-form-label">Water quality Value eg. mg/L</label>
+
+            </div>
+            <div class="form-group">
+
+                <input type="text" name="watervalue" id="watervalue" class="form-control form-control-user" />
+            </div>
+
+            <div class="form-group">
+                <label class="col-form-label">Collection method (composite/ grab/other)</label>
+
+            </div>
+            <div class="form-group">
+
+                <input type="text" name="collectmethod" id="collectmethod" class="form-control form-control-user" />
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="col-form-label">Notes</label>
+
+            </div>
+            <div class="form-group">
+
+                <input type="text" name="note" id="note" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
+            </div>
+
+
+
+
+        </div>
+        }
+        <div class="text-center">
+            <button id="btsubmit" value="Insert" class="btn btn-primary btn-user btn-block" onclick="BtnClick()">Insert</button>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+
+    function realtimepcrn1ddmmyycheckfun() {
+        if (document.getElementById('realtimepcrn1ddmmyycheck').checked) {
+            document.getElementById('realtimepcrn1ddmmyy').style.visibility = 'hidden';
+        } else {
+            document.getElementById('realtimepcrn1ddmmyy').style.visibility = 'visible';
+        }
+    }
+
+
+    function realtimepcrn2ddmmyycheckfun() {
+        if (document.getElementById('realtimepcrn2ddmmyycheck').checked) {
+            document.getElementById('realtimepcrn2ddmmyy').style.visibility = 'hidden';
+        } else {
+            document.getElementById('realtimepcrn2ddmmyy').style.visibility = 'visible';
+        }
+    }
+
+
+    function realtimepcrnEgencheckfun() {
+        if (document.getElementById('realtimepcrnEgencheck').checked) {
+            document.getElementById('realtimepcrnEgen').style.visibility = 'hidden';
+        } else {
+            document.getElementById('realtimepcrnEgen').style.visibility = 'visible';
+        }
+    }
+
+
+    $("#datesample").datepicker({ dateFormat: "dd-mm-yy", maxDate: " 0D" });
+    $("#rnaextractiondate").datepicker({ dateFormat: "dd-mm-yy", maxDate: " 0D" });
+    $("#realtimepcrn1ddmmyy").datepicker({ dateFormat: "dd-mm-yy", maxDate: " 0D" });
+    $("#realtimepcrn2ddmmyy").datepicker({ dateFormat: "dd-mm-yy", maxDate: " 0D" });
+    $("#realtimepcrnEgen").datepicker({ dateFormat: "dd-mm-yy", maxDate: " 0D" });
+
+
+
+
+
+
+    $("#tempcoleman").inputmask({ "mask": "99.99" });
+    $("#ctvaluep1").inputmask({ "mask": "99.99" });
+    $("#ctvaluep2").inputmask({ "mask": "99.99" });
+    $("#ctvaluep3").inputmask({ "mask": "99.99" });
+    $("#target1gcl").inputmask({ "mask": "999" });
+    $("#target2gcl").inputmask({ "mask": "999" });
+    $("#target1limitgcl").inputmask({ "mask": "999" });
+    $("#target2limitgcl").inputmask({ "mask": "999" });
+    $("#flowm3day").inputmask({ "mask": "999" });
+    $("#watervalue").inputmask({ "mask": "999" });
+    $("#waterquality").inputmask({ "mask": "999" });
+
+
+    function postdata() {
+
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+
+
+
+        var idrlform =
+        {
+            datesample: $("#datesample").val(),
+            timesample: $("#timesample").val(),
+            receivedby: $("#receivedby").val(),
+            temloggerinclude: $('input[name="temloggerinclude"]:checked').val(),
+            tempcoleman: $("#tempcoleman").val(),
+            samplereceipt: $('input[name="samplereceipt"]:checked').val(),
+            rnaextractiondate: $("#rnaextractiondate").val(),
+            realtimepcrn1ddmmyy: $("#realtimepcrn1ddmmyy").val(),
+            realtimepcrn1gen: $('input[name="realtimepcrn1gen"]:checked').val(),
+            ctvaluep1: $("#ctvaluep1").val(),
+            realtimepcrn2ddmmyy: $("#realtimepcrn2ddmmyy").val(),
+            realtimepcrn2gen: $('input[name="realtimepcrn2gen"]:checked').val(),
+            ctvaluep2: $("#ctvaluep2").val(),
+            realtimepcrnEgen: $("#realtimepcrnEgen").val(),
+            realtimepcrn3Egen: $('input[name="realtimepcrn3Egen"]:checked').val(),
+            ctvaluep3: $("#ctvaluep3").val(),
+            target1gcl: $("#target1gcl").val(),
+            target2gcl: $("#target2gcl").val(),
+            target1limitgcl: $("#target1limitgcl").val(),
+            target2limitgcl: $("#target2limitgcl").val(),
+            target1pre_absen: $('input[name="target1pre_absen"]:checked').val(),
+            target2pre_absen: $('input[name="target2pre_absen"]:checked').val(),
+            flowm3day: $("#flowm3day").val(),
+            passqaqc: $("#passqaqc").val(),
+            waterquality: $("#waterquality").val(),
+            watervalue: $("#watervalue").val(),
+            collectmethod: $("#collectmethod").val(),
+            note: $("#note").val(),
+        }
+        $.ajax({
+            method: "POST",
+            url: "/Forms/molecular_section_fill",
+
+            data: {
+                __RequestVerificationToken: token,
+                idrl: idrlform
+
+            },
+
+            success: function (response) {
+
+                alert(response.responseText);
+                location.reload(true);
+
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert("Contact Developer Team");
+            }
+        })
+    }
+
+
+    function BtnClick() {
+
+        if (validation()) {
+            postdata();
+        }
+    }
+
+
+    function validation() {
+        if (!$('input[name="temloggerinclude"]').is(':checked')) {
+            alert("Please Check Temperature logger included");
+            return false;
+        }
+        if (!$('input[name="samplereceipt"]').is(':checked')) {
+            alert("Please Check Sample Receipt");
+            return false;
+        }
+
+        if (!$('input[name="realtimepcrn1gen"]').is(':checked')) {
+            alert("Please Check Realtime PCR Results ");
+            return false;
+        }
+
+        if (!$('input[name="target1pre_absen"]').is(':checked')) {
+            alert("Please Check Realtime PCR Results ");
+            return false;
+        }
+        if (!$('input[name="target2pre_absen"]').is(':checked')) {
+            alert("Please Check Realtime PCR Results ");
+            return false;
+        }
+        return true;
+    }
+
+</script>

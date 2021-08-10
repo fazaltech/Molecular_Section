@@ -1,0 +1,454 @@
+﻿
+@{
+    ViewBag.Title = "molecular_section2_fill";
+}
+
+
+
+<h2>Molecular Section</h2>
+
+<script>
+
+    $(function () {
+        $("#datesample").datepicker({ minDate: -20, maxDate: "+1M +10D" });
+    });</script>
+<div class="card mb-4" style="width: 1002px;">
+    <div class="card-header">
+        Section C 
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("molecular_section2_fill", "Forms", FormMethod.Post, new { id = "__AjaxAntiForgeryForm" }))
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+
+            <input type="hidden" id="prodptided" name="prodptided">
+
+
+
+            <div class="form-group">
+                <label class="col-form-label">Realtime PCR Processing Date For N1 gene (dd:mm:yy)</label>
+
+        
+
+                <input type="text" name="realtimepcrn1ddmmyy" id="realtimepcrn1ddmmyy" class="form-control form-control-user" placeholder="dd-mm-yyyy" autocomplete="off" />
+
+
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="realtimepcrn1ddmmyycheck" onchange="realtimepcrn1ddmmyycheckfun()" name="realtimepcrn1ddmmyycheck">
+                    <label class="custom-control-label" for="realtimepcrn1ddmmyycheck">Not Performed</label>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Realtime PCR Results (For Target 1; N1 gene)</label>
+
+
+                <div class="demo-inline-spacing">
+
+
+
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="realtimepcrn1gen1" name="realtimepcrn1gen" class="custom-control-input" value="1">
+                        <label class="custom-control-label" for="realtimepcrn1gen1">Positive</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="realtimepcrn1gen2" name="realtimepcrn1gen" class="custom-control-input" value="2">
+                        <label class="custom-control-label" for="realtimepcrn1gen2">Negative</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="realtimepcrn1gen97" name="realtimepcrn1gen" class="custom-control-input" value="97">
+                        <label class="custom-control-label" for="realtimepcrn1gen97">Not Performed</label>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Ct Value (in Case of Positive result)</label>
+
+
+
+                <input type="text" name="ctvaluep1" id="ctvaluep1" class="form-control form-control-user" />
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Remarks (if any)</label>
+
+
+
+                <input type="text" name="n1gneremark" id="n1gneremark" class="form-control form-control-user" placeholder="Remarks (if any)" autocomplete="off" />
+
+
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="n1gneremarkcheck" onchange="n1gneremarkcheckfun()" name="n1gneremarkcheck">
+                    <label class="custom-control-label" for="n1gneremarkcheck">None</label>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Realtime PCR Processing Date For N2 gene (dd:mm:yy)</label>
+
+            
+                <input type="text" name="realtimepcrn2ddmmyy" id="realtimepcrn2ddmmyy" class="form-control form-control-user" placeholder="dd-mm-yyyy" autocomplete="off" />
+
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="realtimepcrn2ddmmyycheck" onchange="realtimepcrn2ddmmyycheckfun()" name="realtimepcrn2ddmmyycheck">
+                    <label class="custom-control-label" for="realtimepcrn2ddmmyycheck">Not Performed</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Realtime PCR Results (For Target 2; N2 gene)</label>
+
+
+                <div class="demo-inline-spacing">
+
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="realtimepcrn2gen1" name="realtimepcrn2gen" class="custom-control-input" value="1">
+                        <label class="custom-control-label" for="realtimepcrn2gen1">Positive</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="realtimepcrn2gen2" name="realtimepcrn2gen" class="custom-control-input" value="2">
+                        <label class="custom-control-label" for="realtimepcrn2gen2">Negative</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="realtimepcrn2gen97" name="realtimepcrn2gen" class="custom-control-input" value="97">
+                        <label class="custom-control-label" for="realtimepcrn2gen97">Not Performed</label>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Ct Value (in Case of Positive result)</label>
+
+           
+
+                <input type="text" name="ctvaluep2" id="ctvaluep2" class="form-control form-control-user" />
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Remarks (if any)</label>
+
+          
+
+                <input type="text" name="n2gneremark" id="n2gneremark" class="form-control form-control-user" placeholder="Remarks (if any)" autocomplete="off" />
+
+
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="n2gneremarkcheck" onchange="n2gneremarkcheckfun()" name="n2gneremarkcheck">
+                    <label class="custom-control-label" for="n2gneremarkcheck">None</label>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Realtime PCR Processing Date For E gene (dd:mmdd:mm:yy)</label>
+
+        
+                <input type="text" name="realtimepcrnEgen" id="realtimepcrnEgen" class="form-control form-control-user" placeholder="dd-mm-yyyy" autocomplete="off" />
+
+
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="realtimepcrnEgencheck" onchange="realtimepcrnEgencheckfun()" name="realtimepcrnEgencheck">
+                    <label class="custom-control-label" for="realtimepcrnEgencheck">Not Performed</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-form-label">Realtime PCR Results (For Target 3; E gene)</label>
+
+
+                <div class="demo-inline-spacing">
+
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="realtimepcrn3Egen1" name="realtimepcrn3Egen" class="custom-control-input" value="1">
+                        <label class="custom-control-label" for="realtimepcrn3Egen1">Positive</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="realtimepcrn3Egen2" name="realtimepcrn3Egen" class="custom-control-input" value="2">
+                        <label class="custom-control-label" for="realtimepcrn3Egen2">Negative</label>
+                    </div>
+
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="realtimepcrn3Egen97" name="realtimepcrn3Egen" class="custom-control-input" value="97">
+                        <label class="custom-control-label" for="realtimepcrn3Egen">Not Performed</label>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Ct Value (in Case of Positive result)</label>
+
+
+                <input type="text" name="ctvaluep3" id="ctvaluep3" class="form-control form-control-user" />
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Remarks (if any)</label>
+
+         
+
+                <input type="text" name="n_e_gneremark" id="n_e_gneremark" class="form-control form-control-user" placeholder="Remarks (if any)" autocomplete="off" />
+
+
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="n_e_gneremarkcheck" onchange="n_e_gneremarkcheckfun()" name="n_e_gneremarkcheck">
+                    <label class="custom-control-label" for="n_e_gneremarkcheck">None</label>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+        }
+        <div class="text-center">
+            <button id="btsubmit" value="Insert" class="btn btn-primary btn-user btn-block" onclick="BtnClick()">Insert</button>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+
+
+    function realtimepcrn1ddmmyycheckfun() {
+        if (document.getElementById('realtimepcrn1ddmmyycheck').checked) {
+            document.getElementById('realtimepcrn1ddmmyy').style.visibility = 'hidden';
+            document.getElementById('realtimepcrn1ddmmyy').val = "97";
+        } else {
+            document.getElementById('realtimepcrn1ddmmyy').style.visibility = 'visible';
+            document.getElementById('realtimepcrn1ddmmyy').val = "";
+        }
+    }
+
+
+    function realtimepcrn2ddmmyycheckfun() {
+        if (document.getElementById('realtimepcrn2ddmmyycheck').checked) {
+            document.getElementById('realtimepcrn2ddmmyy').style.visibility = 'hidden';
+            document.getElementById('realtimepcrn2ddmmyy').val = "97";
+        } else {
+            document.getElementById('realtimepcrn2ddmmyy').style.visibility = 'visible';
+            document.getElementById('realtimepcrn2ddmmyy').val = "";
+        }
+    }
+
+
+
+    function n1gneremarkcheckfun() {
+        if (document.getElementById('n1gneremarkcheck').checked) {
+            document.getElementById('n1gneremark').style.visibility = 'hidden';
+            document.getElementById('n1gneremark').val = "97";
+        } else {
+            document.getElementById('n1gneremark').style.visibility = 'visible';
+            document.getElementById('n1gneremark').val = "";
+        }
+    }
+
+
+    function n2gneremarkcheckfun() {
+        if (document.getElementById('n2gneremarkcheck').checked) {
+            document.getElementById('n2gneremark').style.visibility = 'hidden';
+            document.getElementById('n2gneremark').val = "97";
+        } else {
+            document.getElementById('n2gneremark').style.visibility = 'visible';
+            document.getElementById('n2gneremark').val = "";
+        }
+    }
+
+
+    function n_e_gneremarkcheckfun() {
+        if (document.getElementById('n_e_gneremarkcheck').checked) {
+            document.getElementById('n_e_gneremark').style.visibility = 'hidden';
+            document.getElementById('n_e_gneremark').val = "97";
+        } else {
+            document.getElementById('n_e_gneremark').style.visibility = 'visible';
+            document.getElementById('n_e_gneremark').val = "";
+        }
+    }
+
+    function realtimepcrnEgencheckfun() {
+        if (document.getElementById('realtimepcrnEgencheck').checked) {
+            document.getElementById('realtimepcrnEgen').style.visibility = 'hidden';
+            document.getElementById('realtimepcrnEgen').val = "97";
+        } else {
+            document.getElementById('realtimepcrnEgen').style.visibility = 'visible';
+            document.getElementById('realtimepcrnEgen').val = "";
+        }
+    }
+
+
+    $("#datesample").datepicker({ dateFormat: "dd-mm-yy", maxDate: " 0D" });
+    $("#rnaextractiondate").datepicker({ dateFormat: "dd-mm-yy", maxDate: " 0D" });
+    $("#realtimepcrn1ddmmyy").datepicker({ dateFormat: "dd-mm-yy", maxDate: " 0D" });
+    $("#realtimepcrn2ddmmyy").datepicker({ dateFormat: "dd-mm-yy", maxDate: " 0D" });
+    $("#realtimepcrnEgen").datepicker({ dateFormat: "dd-mm-yy", maxDate: " 0D" });
+
+
+
+
+
+
+    $("#tempcoleman").inputmask({ "mask": "99.99" });
+    $("#ctvaluep1").inputmask({ "mask": "99.99" });
+    $("#ctvaluep2").inputmask({ "mask": "99.99" });
+    $("#ctvaluep3").inputmask({ "mask": "99.99" });
+    $("#target1gcl").inputmask({ "mask": "999" });
+    $("#target2gcl").inputmask({ "mask": "999" });
+    $("#target1limitgcl").inputmask({ "mask": "999" });
+    $("#target2limitgcl").inputmask({ "mask": "999" });
+    $("#flowm3day").inputmask({ "mask": "999" });
+    $("#watervalue").inputmask({ "mask": "999" });
+    $("#waterquality").inputmask({ "mask": "999" });
+
+
+    function postdata() {
+
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+
+
+
+        var idrlform =
+        {
+         
+            v2realtimepcrn1ddmmyy: $("#realtimepcrn1ddmmyy").val(),
+            v2realtimepcrn1gen: $('input[name="realtimepcrn1gen"]:checked').val(),
+            v2ctvaluep1: $("#ctvaluep1").val(),
+            v2n1gneremark: $("#n1gneremark").val(),
+            v2realtimepcrn2ddmmyy: $("#realtimepcrn2ddmmyy").val(),
+            v2realtimepcrn2gen: $('input[name="realtimepcrn2gen"]:checked').val(),
+            v2ctvaluep2: $("#ctvaluep2").val(),
+            v2n2gneremark: $("#n2gneremark").val(),
+            v2realtimepcrnEgen: $("#realtimepcrnEgen").val(),
+            v2realtimepcrn3Egen: $('input[name="realtimepcrn3Egen"]:checked').val(),
+            v2ctvaluep3: $("#ctvaluep3").val(),
+            v2n_e_gneremark: $("#n_e_gneremark").val(),
+
+
+        }
+        $.ajax({
+            method: "POST",
+            url: "/Forms/molecular_section2_fill",
+
+            data: {
+                __RequestVerificationToken: token,
+                idrlsec2: idrlform
+
+            },
+
+            success: function (response) {
+
+                alert(response.responseText);
+                location.reload(true);
+
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert("Contact Developer Team");
+            }
+        })
+    }
+
+
+    function BtnClick() {
+
+        if (validation()) {
+            postdata();
+        }
+    }
+
+
+    function validation() {
+        var val_realtimepcrn1ddmmyy = $("#realtimepcrn1ddmmyy").val();
+        var val_ctvaluep1 = $("#ctvaluep1").val();
+        var val_n1gneremark = $("#n1gneremark").val();
+
+
+        var val_realtimepcrn2ddmmyy = $("#realtimepcrn2ddmmyy").val();
+        var val_ctvaluep2 = $("#ctvaluep2").val();
+        var val_n2gneremark = $("#n2gneremark").val();
+
+
+        var val_realtimepcrnEgen = $("#realtimepcrnEgen").val();
+        var val_ctvaluep3 = $("#ctvaluep3").val();
+        var val_n_e_gneremark = $("#n_e_gneremark").val();
+
+
+
+
+
+
+        if (!$('input[name="realtimepcrn1ddmmyycheck"]').is(':checked') && val_realtimepcrn1ddmmyy=="") {
+            alert("Please Enter Realtime PCR Processing Date For N1 gene ");
+            return false;
+        }
+
+        if (val_ctvaluep1 == "") {
+            alert("Please Enter Ct Value For N1 gene");
+            return false;
+        }
+
+       
+        if (!$('input[name="n1gneremarkcheck"]').is(':checked') && !val_n1gneremark.match(/\S/)) {
+            alert("Please Enter Remarks For N1 gene ");
+            return false;
+        }
+
+        if (!$('input[name="realtimepcrn1gen"]').is(':checked')) {
+            alert("Please Check Realtime PCR Results ");
+            return false;
+        }
+
+
+
+
+
+        if (!$('input[name="realtimepcrn2ddmmyycheck"]').is(':checked') && val_realtimepcrn2ddmmyy == "") {
+            alert("Please Enter Realtime PCR Processing Date For N2 gene ");
+            return false;
+        }
+        if (val_ctvaluep2 == "") {
+            alert("Please Enter Ct Value For N2 gene");
+            return false;
+        }
+        if (!$('input[name="n2gneremarkcheck"]').is(':checked') && !val_n2gneremark.match(/\S/)) {
+            alert("Please Enter Realtime PCR Processing Date For N1 gene ");
+            return false;
+        }
+        if (!$('input[name="realtimepcrn2gen"]').is(':checked')) {
+            alert("Please Check Realtime PCR Results (For Target 2; N2 gene) ");
+            return false;
+        }
+
+
+
+      
+        if (!$('input[name="realtimepcrnEgencheck"]').is(':checked') && val_realtimepcrnEgen == "") {
+            alert("Please Enter Realtime PCR Processing Date For E gene ");
+            return false;
+        }
+        if (val_ctvaluep3 == "") {
+            alert("Please Enter Ct Value For E gene");
+            return false;
+        }
+        if (!$('input[name="n_e_gneremarkcheck"]').is(':checked') && !val_n_e_gneremark.match(/\S/)) {
+            alert("Please Enter Realtime PCR Processing Date For N1 gene ");
+            return false;
+        }
+        if (!$('input[name="realtimepcrn3Egen"]').is(':checked')) {
+            alert("Please Check Realtime PCR Results (For Target 2; N2 gene) ");
+            return false;
+        }
+       
+        return true;
+    }
+
+</script>

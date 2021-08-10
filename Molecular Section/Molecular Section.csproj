@@ -1,0 +1,661 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2B5BBC00-F513-43F4-97D7-4303E8365363}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Molecular_Section</RootNamespace>
+    <AssemblyName>Molecular Section</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\FormsController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106091543289_initialcreate.cs" />
+    <Compile Include="Migrations\202106091543289_initialcreate.designer.cs">
+      <DependentUpon>202106091543289_initialcreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Path_Molecular.Context.cs" />
+    <Compile Include="Models\site.cs" />
+    <Compile Include="Models\SiteRole.cs" />
+    <Compile Include="Models\specimen.cs" />
+    <Compile Include="Models\tbl_idrl.cs" />
+    <Compile Include="Models\tbl_roles.cs" />
+    <Compile Include="Models\user_dash.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\app-assets\css\bootstrap-extended.min.css" />
+    <Content Include="assets\app-assets\css\bootstrap.min.css" />
+    <Content Include="assets\app-assets\css\colors.min.css" />
+    <Content Include="assets\app-assets\css\components.min.css" />
+    <Content Include="assets\app-assets\css\core\colors\palette-noui.css" />
+    <Content Include="assets\app-assets\css\core\menu\menu-types\vertical-menu.min.css" />
+    <Content Include="assets\app-assets\css\pages\app-calendar.min.css" />
+    <Content Include="assets\app-assets\css\pages\app-chat-list.min.css" />
+    <Content Include="assets\app-assets\css\pages\app-chat.min.css" />
+    <Content Include="assets\app-assets\css\pages\app-ecommerce-details.min.css" />
+    <Content Include="assets\app-assets\css\pages\app-ecommerce.min.css" />
+    <Content Include="assets\app-assets\css\pages\app-email.min.css" />
+    <Content Include="assets\app-assets\css\pages\app-file-manager.min.css" />
+    <Content Include="assets\app-assets\css\pages\app-invoice-list.min.css" />
+    <Content Include="assets\app-assets\css\pages\app-invoice-print.min.css" />
+    <Content Include="assets\app-assets\css\pages\app-invoice.min.css" />
+    <Content Include="assets\app-assets\css\pages\app-kanban.css" />
+    <Content Include="assets\app-assets\css\pages\app-todo.min.css" />
+    <Content Include="assets\app-assets\css\pages\app-user.min.css" />
+    <Content Include="assets\app-assets\css\pages\dashboard-ecommerce.min.css" />
+    <Content Include="assets\app-assets\css\pages\page-auth.min.css" />
+    <Content Include="assets\app-assets\css\pages\page-blog.min.css" />
+    <Content Include="assets\app-assets\css\pages\page-faq.min.css" />
+    <Content Include="assets\app-assets\css\pages\page-knowledge-base.min.css" />
+    <Content Include="assets\app-assets\css\pages\page-misc.min.css" />
+    <Content Include="assets\app-assets\css\pages\page-pricing.min.css" />
+    <Content Include="assets\app-assets\css\pages\page-profile.min.css" />
+    <Content Include="assets\app-assets\css\pages\ui-colors.min.css" />
+    <Content Include="assets\app-assets\css\pages\ui-feather.min.css" />
+    <Content Include="assets\app-assets\css\plugins\charts\chart-apex.min.css" />
+    <Content Include="assets\app-assets\css\plugins\extensions\ext-component-context-menu.min.css" />
+    <Content Include="assets\app-assets\css\plugins\extensions\ext-component-drag-drop.min.css" />
+    <Content Include="assets\app-assets\css\plugins\extensions\ext-component-media-player.min.css" />
+    <Content Include="assets\app-assets\css\plugins\extensions\ext-component-ratings.min.css" />
+    <Content Include="assets\app-assets\css\plugins\extensions\ext-component-sliders.min.css" />
+    <Content Include="assets\app-assets\css\plugins\extensions\ext-component-sweet-alerts.min.css" />
+    <Content Include="assets\app-assets\css\plugins\extensions\ext-component-swiper.min.css" />
+    <Content Include="assets\app-assets\css\plugins\extensions\ext-component-toastr.min.css" />
+    <Content Include="assets\app-assets\css\plugins\extensions\ext-component-tour.min.css" />
+    <Content Include="assets\app-assets\css\plugins\extensions\ext-component-tree.min.css" />
+    <Content Include="assets\app-assets\css\plugins\forms\form-file-uploader.min.css" />
+    <Content Include="assets\app-assets\css\plugins\forms\form-number-input.min.css" />
+    <Content Include="assets\app-assets\css\plugins\forms\form-quill-editor.min.css" />
+    <Content Include="assets\app-assets\css\plugins\forms\form-validation.css" />
+    <Content Include="assets\app-assets\css\plugins\forms\form-wizard.min.css" />
+    <Content Include="assets\app-assets\css\plugins\forms\pickers\form-flat-pickr.min.css" />
+    <Content Include="assets\app-assets\css\plugins\forms\pickers\form-pickadate.min.css" />
+    <Content Include="assets\app-assets\css\plugins\maps\map-leaflet.min.css" />
+    <Content Include="assets\app-assets\css\plugins\tables\table-ag-grid.min.css" />
+    <Content Include="assets\app-assets\css\themes\bordered-layout.min.css" />
+    <Content Include="assets\app-assets\css\themes\dark-layout.min.css" />
+    <Content Include="assets\app-assets\css\themes\semi-dark-layout.min.css" />
+    <Content Include="assets\app-assets\fonts\font-awesome\css\font-awesome.min.css" />
+    <Content Include="assets\app-assets\images\avatars\1-small.png" />
+    <Content Include="assets\app-assets\images\avatars\10-small.png" />
+    <Content Include="assets\app-assets\images\avatars\11-small.png" />
+    <Content Include="assets\app-assets\images\avatars\12-small.png" />
+    <Content Include="assets\app-assets\images\avatars\3-small.png" />
+    <Content Include="assets\app-assets\images\avatars\5-small.png" />
+    <Content Include="assets\app-assets\images\avatars\6-small.png" />
+    <Content Include="assets\app-assets\images\avatars\7.png" />
+    <Content Include="assets\app-assets\images\banner\banner-1.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-10.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-11.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-12.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-13.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-14.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-15.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-16.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-17.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-18.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-19.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-2.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-20.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-21.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-22.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-23.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-24.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-26.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-27.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-28.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-29.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-3.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-30.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-31.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-32.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-33.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-34.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-35.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-36.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-37.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-38.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-39.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-4.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-5.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-7.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-8.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner-9.jpg" />
+    <Content Include="assets\app-assets\images\banner\banner.png" />
+    <Content Include="assets\app-assets\images\banner\parallax-4.jpg" />
+    <Content Include="assets\app-assets\images\elements\apple-watch.png" />
+    <Content Include="assets\app-assets\images\elements\decore-left.png" />
+    <Content Include="assets\app-assets\images\elements\decore-right.png" />
+    <Content Include="assets\app-assets\images\elements\homepod.png" />
+    <Content Include="assets\app-assets\images\elements\iphone-x.png" />
+    <Content Include="assets\app-assets\images\elements\macbook-pro.png" />
+    <Content Include="assets\app-assets\images\elements\magic-mouse.png" />
+    <Content Include="assets\app-assets\images\icons\apple-safari.png" />
+    <Content Include="assets\app-assets\images\icons\doc.png" />
+    <Content Include="assets\app-assets\images\icons\drive.png" />
+    <Content Include="assets\app-assets\images\icons\dropbox.png" />
+    <Content Include="assets\app-assets\images\icons\file-icons\pdf.png" />
+    <Content Include="assets\app-assets\images\icons\google-chrome.png" />
+    <Content Include="assets\app-assets\images\icons\icloud-1.png" />
+    <Content Include="assets\app-assets\images\icons\internet-explorer.png" />
+    <Content Include="assets\app-assets\images\icons\jpg.png" />
+    <Content Include="assets\app-assets\images\icons\js.png" />
+    <Content Include="assets\app-assets\images\icons\json.png" />
+    <Content Include="assets\app-assets\images\icons\mozila-firefox.png" />
+    <Content Include="assets\app-assets\images\icons\onedrivenew.png" />
+    <Content Include="assets\app-assets\images\icons\opera.png" />
+    <Content Include="assets\app-assets\images\icons\pdf.png" />
+    <Content Include="assets\app-assets\images\icons\txt.png" />
+    <Content Include="assets\app-assets\images\icons\xls.png" />
+    <Content Include="assets\app-assets\images\ico\apple-icon-120.html" />
+    <Content Include="assets\app-assets\images\logo\logo.png" />
+    <Content Include="assets\app-assets\images\pages\calendar-illustration.png" />
+    <Content Include="assets\app-assets\images\pages\eCommerce\1.png" />
+    <Content Include="assets\app-assets\images\pages\eCommerce\2.png" />
+    <Content Include="assets\app-assets\images\pages\eCommerce\3.png" />
+    <Content Include="assets\app-assets\images\pages\eCommerce\4.png" />
+    <Content Include="assets\app-assets\images\pages\eCommerce\5.png" />
+    <Content Include="assets\app-assets\images\pages\eCommerce\6.png" />
+    <Content Include="assets\app-assets\images\pages\eCommerce\7.png" />
+    <Content Include="assets\app-assets\images\pages\eCommerce\8.png" />
+    <Content Include="assets\app-assets\images\pages\eCommerce\9.png" />
+    <Content Include="assets\app-assets\images\pages\kb-image.jpg" />
+    <Content Include="assets\app-assets\images\portrait\small\avatar-s-1.jpg" />
+    <Content Include="assets\app-assets\images\portrait\small\avatar-s-10.jpg" />
+    <Content Include="assets\app-assets\images\portrait\small\avatar-s-11.jpg" />
+    <Content Include="assets\app-assets\images\portrait\small\avatar-s-12.jpg" />
+    <Content Include="assets\app-assets\images\portrait\small\avatar-s-13.jpg" />
+    <Content Include="assets\app-assets\images\portrait\small\avatar-s-14.jpg" />
+    <Content Include="assets\app-assets\images\portrait\small\avatar-s-15.jpg" />
+    <Content Include="assets\app-assets\images\portrait\small\avatar-s-16.jpg" />
+    <Content Include="assets\app-assets\images\portrait\small\avatar-s-17.jpg" />
+    <Content Include="assets\app-assets\images\portrait\small\avatar-s-18.jpg" />
+    <Content Include="assets\app-assets\images\portrait\small\avatar-s-2.jpg" />
+    <Content Include="assets\app-assets\images\portrait\small\avatar-s-20.jpg" />
+    <Content Include="assets\app-assets\images\portrait\small\avatar-s-21.jpg" />
+    <Content Include="assets\app-assets\images\portrait\small\avatar-s-22.jpg" />
+    <Content Include="assets\app-assets\images\portrait\small\avatar-s-23.jpg" />
+    <Content Include="assets\app-assets\images\portrait\small\avatar-s-3.jpg" />
+    <Content Include="assets\app-assets\images\portrait\small\avatar-s-4.jpg" />
+    <Content Include="assets\app-assets\images\portrait\small\avatar-s-5.jpg" />
+    <Content Include="assets\app-assets\images\portrait\small\avatar-s-6.jpg" />
+    <Content Include="assets\app-assets\images\portrait\small\avatar-s-7.jpg" />
+    <Content Include="assets\app-assets\images\portrait\small\avatar-s-8.jpg" />
+    <Content Include="assets\app-assets\images\portrait\small\avatar-s-9.jpg" />
+    <Content Include="assets\app-assets\images\profile\post-media\2.jpg" />
+    <Content Include="assets\app-assets\images\profile\post-media\25.jpg" />
+    <Content Include="assets\app-assets\images\profile\user-uploads\timeline.jpg" />
+    <Content Include="assets\app-assets\images\profile\user-uploads\user-02.jpg" />
+    <Content Include="assets\app-assets\images\profile\user-uploads\user-03.jpg" />
+    <Content Include="assets\app-assets\images\profile\user-uploads\user-04.jpg" />
+    <Content Include="assets\app-assets\images\profile\user-uploads\user-05.jpg" />
+    <Content Include="assets\app-assets\images\profile\user-uploads\user-06.jpg" />
+    <Content Include="assets\app-assets\images\profile\user-uploads\user-07.jpg" />
+    <Content Include="assets\app-assets\images\profile\user-uploads\user-08.jpg" />
+    <Content Include="assets\app-assets\images\profile\user-uploads\user-09.jpg" />
+    <Content Include="assets\app-assets\images\profile\user-uploads\user-13.jpg" />
+    <Content Include="assets\app-assets\images\slider\01.jpg" />
+    <Content Include="assets\app-assets\images\slider\02.jpg" />
+    <Content Include="assets\app-assets\images\slider\03.jpg" />
+    <Content Include="assets\app-assets\images\slider\04.jpg" />
+    <Content Include="assets\app-assets\images\slider\05.jpg" />
+    <Content Include="assets\app-assets\images\slider\06.jpg" />
+    <Content Include="assets\app-assets\images\slider\08.jpg" />
+    <Content Include="assets\app-assets\images\slider\09.jpg" />
+    <Content Include="assets\app-assets\images\slider\10.jpg" />
+    <Content Include="assets\app-assets\js\core\app-menu.min.js" />
+    <Content Include="assets\app-assets\js\core\app.min.js" />
+    <Content Include="assets\app-assets\js\scripts\cards\card-advance.min.js" />
+    <Content Include="assets\app-assets\js\scripts\cards\card-analytics.min.js" />
+    <Content Include="assets\app-assets\js\scripts\cards\card-statistics.min.js" />
+    <Content Include="assets\app-assets\js\scripts\charts\chart-apex.min.js" />
+    <Content Include="assets\app-assets\js\scripts\charts\chart-chartjs.min.js" />
+    <Content Include="assets\app-assets\js\scripts\components\components-alerts.min.js" />
+    <Content Include="assets\app-assets\js\scripts\components\components-bs-toast.min.js" />
+    <Content Include="assets\app-assets\js\scripts\components\components-collapse.min.js" />
+    <Content Include="assets\app-assets\js\scripts\components\components-dropdowns.min.js" />
+    <Content Include="assets\app-assets\js\scripts\components\components-modals.min.js" />
+    <Content Include="assets\app-assets\js\scripts\components\components-navs.min.js" />
+    <Content Include="assets\app-assets\js\scripts\components\components-popovers.min.js" />
+    <Content Include="assets\app-assets\js\scripts\components\components-tooltips.min.js" />
+    <Content Include="assets\app-assets\js\scripts\customizer.min.js" />
+    <Content Include="assets\app-assets\js\scripts\extensions\ext-component-blockui.js" />
+    <Content Include="assets\app-assets\js\scripts\extensions\ext-component-clipboard.min.js" />
+    <Content Include="assets\app-assets\js\scripts\extensions\ext-component-context-menu.min.js" />
+    <Content Include="assets\app-assets\js\scripts\extensions\ext-component-drag-drop.min.js" />
+    <Content Include="assets\app-assets\js\scripts\extensions\ext-component-i18n.js" />
+    <Content Include="assets\app-assets\js\scripts\extensions\ext-component-media-player.min.js" />
+    <Content Include="assets\app-assets\js\scripts\extensions\ext-component-ratings.min.js" />
+    <Content Include="assets\app-assets\js\scripts\extensions\ext-component-sliders.min.js" />
+    <Content Include="assets\app-assets\js\scripts\extensions\ext-component-sweet-alerts.min.js" />
+    <Content Include="assets\app-assets\js\scripts\extensions\ext-component-swiper.min.js" />
+    <Content Include="assets\app-assets\js\scripts\extensions\ext-component-toastr.min.js" />
+    <Content Include="assets\app-assets\js\scripts\extensions\ext-component-tour.min.js" />
+    <Content Include="assets\app-assets\js\scripts\extensions\ext-component-tree.min.js" />
+    <Content Include="assets\app-assets\js\scripts\forms\form-file-uploader.min.js" />
+    <Content Include="assets\app-assets\js\scripts\forms\form-input-mask.min.js" />
+    <Content Include="assets\app-assets\js\scripts\forms\form-number-input.min.js" />
+    <Content Include="assets\app-assets\js\scripts\forms\form-quill-editor.min.js" />
+    <Content Include="assets\app-assets\js\scripts\forms\form-repeater.min.js" />
+    <Content Include="assets\app-assets\js\scripts\forms\form-select2.min.js" />
+    <Content Include="assets\app-assets\js\scripts\forms\form-tooltip-valid.min.js" />
+    <Content Include="assets\app-assets\js\scripts\forms\form-validation.js" />
+    <Content Include="assets\app-assets\js\scripts\forms\form-wizard.min.js" />
+    <Content Include="assets\app-assets\js\scripts\forms\pickers\form-pickers.min.js" />
+    <Content Include="assets\app-assets\js\scripts\maps\map-leaflet.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\app-calendar-events.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\app-calendar.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\app-chat.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\app-ecommerce-checkout.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\app-ecommerce-details.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\app-ecommerce-wishlist.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\app-ecommerce.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\app-email.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\app-file-manager.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\app-invoice-list.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\app-invoice-print.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\app-invoice.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\app-kanban.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\app-todo.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\app-user-edit.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\app-user-list.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\app-user-view.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\dashboard-analytics.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\dashboard-ecommerce.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\page-account-settings.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\page-auth-forgot-password.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\page-auth-login.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\page-auth-register.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\page-auth-reset-password.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\page-blog-edit.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\page-knowledge-base.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\page-pricing.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pages\page-profile.min.js" />
+    <Content Include="assets\app-assets\js\scripts\pagination\components-pagination.js" />
+    <Content Include="assets\app-assets\js\scripts\tables\table-ag-grid.min.js" />
+    <Content Include="assets\app-assets\js\scripts\tables\table-datatables-advanced.min.js" />
+    <Content Include="assets\app-assets\js\scripts\tables\table-datatables-basic.min.js" />
+    <Content Include="assets\app-assets\js\scripts\ui\ui-feather.min.js" />
+    <Content Include="assets\app-assets\vendors\css\animate\animate.min.css" />
+    <Content Include="assets\app-assets\vendors\css\calendars\fullcalendar.min.css" />
+    <Content Include="assets\app-assets\vendors\css\charts\apexcharts.css" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_AMS-Regular-2.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_AMS-Regular.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Caligraphic-Bold-2.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Caligraphic-Bold.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Caligraphic-Regular-2.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Caligraphic-Regular.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Fraktur-Bold-2.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Fraktur-Bold.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Fraktur-Regular-2.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Fraktur-Regular.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Main-Bold-2.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Main-Bold.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Main-BoldItalic-2.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Main-BoldItalic.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Main-Italic-2.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Main-Italic.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Main-Regular-2.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Main-Regular.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Math-BoldItalic-2.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Math-BoldItalic.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Math-Italic-2.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Math-Italic.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_SansSerif-Bold-2.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_SansSerif-Bold.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_SansSerif-Italic-2.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_SansSerif-Italic.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_SansSerif-Regular-2.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_SansSerif-Regular.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Script-Regular-2.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Script-Regular.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Size1-Regular-2.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Size1-Regular.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Size2-Regular-2.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Size2-Regular.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Size3-Regular-2.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Size3-Regular.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Size4-Regular-2.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Size4-Regular.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Typewriter-Regular-2.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Typewriter-Regular.html" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\katex.min.css" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\monokai-sublime.min.css" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\quill.bubble.css" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\quill.snow.css" />
+    <Content Include="assets\app-assets\vendors\css\extensions\32px.html" />
+    <Content Include="assets\app-assets\vendors\css\extensions\40px.html" />
+    <Content Include="assets\app-assets\vendors\css\extensions\dragula.min.css" />
+    <Content Include="assets\app-assets\vendors\css\extensions\font\context-menu-icons0a26-2.html" />
+    <Content Include="assets\app-assets\vendors\css\extensions\font\context-menu-icons0a26.html" />
+    <Content Include="assets\app-assets\vendors\css\extensions\jquery.contextMenu.min.css" />
+    <Content Include="assets\app-assets\vendors\css\extensions\jquery.rateyo.min.css" />
+    <Content Include="assets\app-assets\vendors\css\extensions\jstree.min.css" />
+    <Content Include="assets\app-assets\vendors\css\extensions\nouislider.min.css" />
+    <Content Include="assets\app-assets\vendors\css\extensions\plyr.min.css" />
+    <Content Include="assets\app-assets\vendors\css\extensions\shepherd.min.css" />
+    <Content Include="assets\app-assets\vendors\css\extensions\sweetalert2.min.css" />
+    <Content Include="assets\app-assets\vendors\css\extensions\swiper.min.css" />
+    <Content Include="assets\app-assets\vendors\css\extensions\tether-theme-arrows.css" />
+    <Content Include="assets\app-assets\vendors\css\extensions\tether.min.css" />
+    <Content Include="assets\app-assets\vendors\css\extensions\throbber.html" />
+    <Content Include="assets\app-assets\vendors\css\extensions\toastr.min.css" />
+    <Content Include="assets\app-assets\vendors\css\file-uploaders\dropzone.min.css" />
+    <Content Include="assets\app-assets\vendors\css\forms\select\select2.min.css" />
+    <Content Include="assets\app-assets\vendors\css\forms\spinner\jquery.bootstrap-touchspin.css" />
+    <Content Include="assets\app-assets\vendors\css\forms\wizard\bs-stepper.min.css" />
+    <Content Include="assets\app-assets\vendors\css\jkanban\jkanban.min.css" />
+    <Content Include="assets\app-assets\vendors\css\maps\images\layers-2x.png" />
+    <Content Include="assets\app-assets\vendors\css\maps\images\layers.png" />
+    <Content Include="assets\app-assets\vendors\css\maps\images\marker-icon.png" />
+    <Content Include="assets\app-assets\vendors\css\maps\leaflet.min.css" />
+    <Content Include="assets\app-assets\vendors\css\pickers\flatpickr\flatpickr.min.css" />
+    <Content Include="assets\app-assets\vendors\css\pickers\pickadate\pickadate.css" />
+    <Content Include="assets\app-assets\vendors\css\tables\ag-grid\ag-grid.css" />
+    <Content Include="assets\app-assets\vendors\css\tables\ag-grid\ag-theme-material.css" />
+    <Content Include="assets\app-assets\vendors\css\tables\datatable\buttons.bootstrap4.min.css" />
+    <Content Include="assets\app-assets\vendors\css\tables\datatable\dataTables.bootstrap4.min.css" />
+    <Content Include="assets\app-assets\vendors\css\tables\datatable\datatables.min.css" />
+    <Content Include="assets\app-assets\vendors\css\tables\datatable\extensions\dataTables.checkboxes.css" />
+    <Content Include="assets\app-assets\vendors\css\tables\datatable\responsive.bootstrap.min.css" />
+    <Content Include="assets\app-assets\vendors\css\tables\datatable\responsive.bootstrap4.min.css" />
+    <Content Include="assets\app-assets\vendors\css\tables\datatable\rowGroup.bootstrap4.min.css" />
+    <Content Include="assets\app-assets\vendors\css\vendors.min.css" />
+    <Content Include="assets\app-assets\vendors\js\calendar\fullcalendar.min.js" />
+    <Content Include="assets\app-assets\vendors\js\charts\apexcharts.min.js" />
+    <Content Include="assets\app-assets\vendors\js\charts\chart.min.js" />
+    <Content Include="assets\app-assets\vendors\js\editors\quill\highlight.min.js" />
+    <Content Include="assets\app-assets\vendors\js\editors\quill\katex.min.js" />
+    <Content Include="assets\app-assets\vendors\js\editors\quill\quill.min.js" />
+    <Content Include="assets\app-assets\vendors\js\extensions\dragula.min.js" />
+    <Content Include="assets\app-assets\vendors\js\extensions\dropzone.min.js" />
+    <Content Include="assets\app-assets\vendors\js\extensions\jquery.contextMenu.min.js" />
+    <Content Include="assets\app-assets\vendors\js\extensions\jquery.rateyo.min.js" />
+    <Content Include="assets\app-assets\vendors\js\extensions\jquery.ui.position.min.js" />
+    <Content Include="assets\app-assets\vendors\js\extensions\jstree.min.js" />
+    <Content Include="assets\app-assets\vendors\js\extensions\moment.min.js" />
+    <Content Include="assets\app-assets\vendors\js\extensions\nouislider.min.js" />
+    <Content Include="assets\app-assets\vendors\js\extensions\plyr.min.js" />
+    <Content Include="assets\app-assets\vendors\js\extensions\plyr.polyfilled.min.js" />
+    <Content Include="assets\app-assets\vendors\js\extensions\polyfill.min.js" />
+    <Content Include="assets\app-assets\vendors\js\extensions\shepherd.min.js" />
+    <Content Include="assets\app-assets\vendors\js\extensions\sweetalert2.all.min.js" />
+    <Content Include="assets\app-assets\vendors\js\extensions\swiper.min.js" />
+    <Content Include="assets\app-assets\vendors\js\extensions\tether.min.js" />
+    <Content Include="assets\app-assets\vendors\js\extensions\toastr.min.js" />
+    <Content Include="assets\app-assets\vendors\js\extensions\wNumb.min.js" />
+    <Content Include="assets\app-assets\vendors\js\forms\cleave\addons\cleave-phone.us.js" />
+    <Content Include="assets\app-assets\vendors\js\forms\cleave\cleave.min.js" />
+    <Content Include="assets\app-assets\vendors\js\forms\repeater\jquery.repeater.min.js" />
+    <Content Include="assets\app-assets\vendors\js\forms\select\select2.full.min.js" />
+    <Content Include="assets\app-assets\vendors\js\forms\spinner\jquery.bootstrap-touchspin.js" />
+    <Content Include="assets\app-assets\vendors\js\forms\validation\jquery.validate.min.js" />
+    <Content Include="assets\app-assets\vendors\js\forms\wizard\bs-stepper.min.js" />
+    <Content Include="assets\app-assets\vendors\js\jkanban\jkanban.min.js" />
+    <Content Include="assets\app-assets\vendors\js\maps\leaflet.min.js" />
+    <Content Include="assets\app-assets\vendors\js\pagination\jquery.bootpag.min.js" />
+    <Content Include="assets\app-assets\vendors\js\pagination\jquery.twbsPagination.min.js" />
+    <Content Include="assets\app-assets\vendors\js\pickers\flatpickr\flatpickr.min.js" />
+    <Content Include="assets\app-assets\vendors\js\pickers\pickadate\legacy.js" />
+    <Content Include="assets\app-assets\vendors\js\pickers\pickadate\picker.date.js" />
+    <Content Include="assets\app-assets\vendors\js\pickers\pickadate\picker.js" />
+    <Content Include="assets\app-assets\vendors\js\pickers\pickadate\picker.time.js" />
+    <Content Include="assets\app-assets\vendors\js\tables\ag-grid\ag-grid-community.min.noStyle.js" />
+    <Content Include="assets\app-assets\vendors\js\tables\datatable\buttons.bootstrap4.min.js" />
+    <Content Include="assets\app-assets\vendors\js\tables\datatable\buttons.html5.min.js" />
+    <Content Include="assets\app-assets\vendors\js\tables\datatable\buttons.print.min.js" />
+    <Content Include="assets\app-assets\vendors\js\tables\datatable\datatables.bootstrap4.min.js" />
+    <Content Include="assets\app-assets\vendors\js\tables\datatable\datatables.buttons.min.js" />
+    <Content Include="assets\app-assets\vendors\js\tables\datatable\datatables.checkboxes.min.js" />
+    <Content Include="assets\app-assets\vendors\js\tables\datatable\datatables.min.js" />
+    <Content Include="assets\app-assets\vendors\js\tables\datatable\dataTables.responsive.min.js" />
+    <Content Include="assets\app-assets\vendors\js\tables\datatable\dataTables.rowGroup.min.js" />
+    <Content Include="assets\app-assets\vendors\js\tables\datatable\jquery.dataTables.min.js" />
+    <Content Include="assets\app-assets\vendors\js\tables\datatable\jszip.min.js" />
+    <Content Include="assets\app-assets\vendors\js\tables\datatable\pdfmake.min.js" />
+    <Content Include="assets\app-assets\vendors\js\tables\datatable\responsive.bootstrap.min.js" />
+    <Content Include="assets\app-assets\vendors\js\tables\datatable\responsive.bootstrap4.js" />
+    <Content Include="assets\app-assets\vendors\js\tables\datatable\vfs_fonts.js" />
+    <Content Include="assets\app-assets\vendors\js\vendors.min.js" />
+    <Content Include="assets\assets\css\style.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Main-Regular.woff2" />
+    <Content Include="assets\app-assets\vendors\css\editors\quill\fonts\KaTeX_Math-Italic.woff2" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Forms\Index.cshtml" />
+    <Content Include="Views\Shared\Partial_View\sidebar.cshtml" />
+    <Content Include="Views\Forms\molecular_section_fill.cshtml" />
+    <Content Include="Views\Registration\Login.cshtml" />
+    <Content Include="Views\Shared\Partial_View\navbar.cshtml" />
+    <Content Include="Views\Registration\Registration.cshtml" />
+    <Content Include="Views\Registration\Index.cshtml" />
+    <Content Include="Views\Forms\specimen_index.cshtml" />
+    <Content Include="Views\Forms\molecular_section1_fill.cshtml" />
+    <Content Include="Views\Forms\molecular_section2_fill.cshtml" />
+    <Content Include="Views\Forms\molecular_section3_fill.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202106091543289_initialcreate.resx">
+      <DependentUpon>202106091543289_initialcreate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>61877</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:61877/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

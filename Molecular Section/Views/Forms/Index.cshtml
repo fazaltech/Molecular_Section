@@ -1,0 +1,160 @@
+﻿@model IEnumerable<Molecular_Section.Models.idrl>
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Products Table</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="dataTables_length" id="dataTable_length">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="example" class="datatables-ajax table" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Site ID</th>
+                                    <th>Specimen</th>
+                                    <th>Date sample receipt at laboratory (dd:mm:yy)</th>
+                                    <th>Time sample receipt at laboratory</th>
+                                    <th>Received by:</th>
+                                    <th>Temperature logger included</th>
+                                    <th>Temperature of Coleman at which sample is rcvd (°C)</th>
+                                    <th>Was the sample cold upon receipt</th>
+                                    <th>RNA Extraction Date at laboratory (dd:mm:yy)</th>
+                                    <th>Realtime PCR Processing Date For N1 gene (dd:mm:yy)</th>
+                                    <th>Realtime PCR Results (For Target 1; N1 gene)</th>
+                                    <th>Ct Value (in Case of Positive result)</th>
+                                    <th>Realtime PCR Processing Date For N2 gene (dd:mm:yy)</th>
+                                    <th>Realtime PCR Results (For Target 2; N2 gene)</th>
+                                    <th>Ct Value (in Case of Positive result)</th>
+                                    <th>Realtime PCR Processing Date For E gene (dd:mm:yy)</th>
+                                    <th>Realtime PCR Results (For Target 3; E gene)</th>
+                                    <th>Ct Value (in Case of Positive result)</th>
+                                    <th>Target 1 (gc/L)</th>
+                                    <th>Target 2 (gc/L)</th>
+                                    <th>Target 1 limit (gc/L)</th>
+                                    <th>Target 2 limit (gc/L)</th>
+                                    <th>Target 1 presence/absence</th>
+                                    <th>Target 2 presence/absence</th>
+                                    <th>Flow (m3/day)</th>
+                                    <th>Passed QA/QC</th>
+                                    <th>Water Quality variable eg. TSS mg/L</th>
+                                    <th>Water quality Value eg. mg/L</th>
+                                    <th>Collection method (composite/ grab/other)</th>
+                                    <th>NOTES</th>
+                                    <th>Entry Date</th>
+                                    <th>User</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>@Html.DisplayFor(model => item.site_id)</td>
+                                    <td>@Html.DisplayFor(model => item.specimen)</td>
+                                    <td>@Html.DisplayFor(model => item.datesample)</td>
+                                    <td>@Html.DisplayFor(model => item.timesample)</td>
+                                    <td>@Html.DisplayFor(model => item.receivedby)</td>
+                                    <td>@Html.DisplayFor(model => item.temloggerinclude)</td>
+                                    <td>@Html.DisplayFor(model => item.tempcoleman)</td>
+                                    <td>@Html.DisplayFor(model => item.samplereceipt)</td>
+                                    <td>@Html.DisplayFor(model => item.rnaextractiondate)</td>
+                                    <td>@Html.DisplayFor(model => item.realtimepcrn1ddmmyy)</td>
+                                    <td>@Html.DisplayFor(model => item.realtimepcrn1gen)</td>
+                                    <td>@Html.DisplayFor(model => item.ctvaluep1)</td>
+                                    <td>@Html.DisplayFor(model => item.realtimepcrn2ddmmyy)</td>
+                                    <td>@Html.DisplayFor(model => item.realtimepcrn2gen)</td>
+                                    <td>@Html.DisplayFor(model => item.ctvaluep2)</td>
+                                    <td>@Html.DisplayFor(model => item.realtimepcrnEgen)</td>
+                                    <td>@Html.DisplayFor(model => item.realtimepcrn3Egen)</td>
+                                    <td>@Html.DisplayFor(model => item.ctvaluep3)</td>
+                                    <td>@Html.DisplayFor(model => item.target1gcl)</td>
+                                    <td>@Html.DisplayFor(model => item.target2gcl)</td>
+                                    <td>@Html.DisplayFor(model => item.target1limitgcl)</td>
+                                    <td>@Html.DisplayFor(model => item.target2limitgcl)</td>
+                                    <td>@Html.DisplayFor(model => item.target1pre_absen)</td>
+                                    <td>@Html.DisplayFor(model => item.target2pre_absen)</td>
+                                    <td>@Html.DisplayFor(model => item.flowm3day)</td>
+                                    <td>@Html.DisplayFor(model => item.passqaqc)</td>
+                                    <td>@Html.DisplayFor(model => item.waterquality)</td>
+                                    <td>@Html.DisplayFor(model => item.watervalue)</td>
+                                    <td>@Html.DisplayFor(model => item.collectmethod)</td>
+                                    <td>@Html.DisplayFor(model => item.note)</td>
+                                    <td>@Html.DisplayFor(model => item.entry_date)</td>
+                                    <td>@Html.DisplayFor(model => item.user_name)</td>
+
+
+                                </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Site ID</th>
+                                    <th>Specimen</th>
+                                    <th>Date sample receipt at laboratory (dd:mm:yy)</th>
+                                    <th>Time sample receipt at laboratory</th>
+                                    <th>Received by:</th>
+                                    <th>Temperature logger included</th>
+                                    <th>Temperature of Coleman at which sample is rcvd (°C)</th>
+                                    <th>Was the sample cold upon receipt</th>
+                                    <th>RNA Extraction Date at laboratory (dd:mm:yy)</th>
+                                    <th>Realtime PCR Processing Date For N1 gene (dd:mm:yy)</th>
+                                    <th>Realtime PCR Results (For Target 1; N1 gene)</th>
+                                    <th>Ct Value (in Case of Positive result)</th>
+                                    <th>Realtime PCR Processing Date For N2 gene (dd:mm:yy)</th>
+                                    <th>Realtime PCR Results (For Target 2; N2 gene)</th>
+                                    <th>Ct Value (in Case of Positive result)</th>
+                                    <th>Realtime PCR Processing Date For E gene (dd:mm:yy)</th>
+                                    <th>Realtime PCR Results (For Target 3; E gene)</th>
+                                    <th>Ct Value (in Case of Positive result)</th>
+                                    <th>Target 1 (gc/L)</th>
+                                    <th>Target 2 (gc/L)</th>
+                                    <th>Target 1 limit (gc/L)</th>
+                                    <th>Target 2 limit (gc/L)</th>
+                                    <th>Target 1 presence/absence</th>
+                                    <th>Target 2 presence/absence</th>
+                                    <th>Flow (m3/day)</th>
+                                    <th>Passed QA/QC</th>
+                                    <th>Water Quality variable eg. TSS mg/L</th>
+                                    <th>Water quality Value eg. mg/L</th>
+                                    <th>Collection method (composite/ grab/other)</th>
+                                    <th>NOTES</th>
+                                    <th>Entry Date</th>
+                                    <th>User</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+
+
+
+<script src="~/assets/app-assets/vendors/js/jsvaraiable.js"></script>
+<script>
+
+
+
+
+
+
+
+</script>
+

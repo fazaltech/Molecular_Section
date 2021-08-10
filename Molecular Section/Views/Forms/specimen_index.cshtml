@@ -1,0 +1,430 @@
+﻿
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Specimen Index</title>
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="~/assets/app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+    <script src="~/assets/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js"></script>
+    <script src="~/assets/app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+    <script src="~/assets/app-assets/vendors/js/tables/datatable/responsive.bootstrap4.js"></script>
+    <script src="~/assets/app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
+    <script src="~/assets/app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+    <script src="~/assets/app-assets/vendors/js/tables/datatable/jszip.min.js"></script>
+    <script src="~/assets/app-assets/vendors/js/tables/datatable/pdfmake.min.js"></script>
+    <script src="~/assets/app-assets/vendors/js/tables/datatable/vfs_fonts.js"></script>
+    <script src="~/assets/app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
+    <script src="~/assets/app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
+    <script src="~/assets/app-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js"></script>
+    <script src="~/assets/app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
+    <!-- END: Page Vendor JS-->
+</head>
+<body class="app-content content ">
+
+
+
+    <div class="card">
+        <div class="card-header">
+
+            <div class="heading-elements">
+
+            </div>
+        </div>
+        <div class="card-content collapse show">
+            <div class="card-body">
+                <h4 class="card-title">SEARCH SPECIMEN </h4>
+                <div class="row">
+
+                    <div class="col-sm-6 col-md-6">
+
+                        <div class="form-group">
+                            <label class="label">SELECT SITE ID</label>
+                            <select class="form-control  form-control-sm" id="site_id" name="site_id"></select>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="label">SELECT SPECIMEN</label>
+                            <select class="form-control  form-control-sm" id="specimen" name="specimen"></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <button id="btsubmit" value="Get Data" class="btn btn-primary btn-user btn-block ml-6" onclick="BtnClick()">Get Data</button>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <section id="ajax-datatable">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header border-bottom">
+                        <h4 class="card-title">Specimen Data</h4>
+                    </div>
+                    <div class="card-datatable" style="padding: 10px">
+                        <table id="ajax_table" class="datatables-basic table">
+                            <thead>
+                                <tr>
+                                    <th>Site</th>
+                                    <th>Specimen</th>
+                                    <th>DateTime Sample Laboratory</th>
+                                    <th>Received By</th>
+                                    <th>Action</th>
+
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Site</th>
+                                    <th>Specimen</th>
+                                    <th>DateTime Sample Laboratory</th>
+                                    <th>Received By</th>
+                                    <th>Action</th>
+                                </tr>
+                            </tfoot>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="form-modal-ex">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#inlineForm">
+            Login Form
+        </button>
+        <!-- Modal -->
+        <div class="modal fade text-left"
+             id="inlineForm"
+             tabindex="-1"
+             role="dialog"
+             aria-labelledby="myModalLabel33"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel33">Inline Login Form</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="#">
+                        <div class="modal-body">
+                            <label>Email: </label>
+                            <div class="form-group">
+                                <input type="text" placeholder="Email Address" class="form-control" />
+                            </div>
+
+                            <label>Password: </label>
+                            <div class="form-group">
+                                <input type="password" placeholder="Password" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+
+@if (ViewBag.add != null)
+{
+
+    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.add");
+            };
+
+
+    </script>
+
+
+}
+
+@if (ViewBag.alert != null)
+{
+
+    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.alert");
+
+
+            };
+
+
+    </script>
+
+
+}
+
+
+<script>
+    $(document).ready(function () {
+
+        $.ajax({
+            type: "GET",
+            url: "/Forms/siteid_view",
+            data: "",
+            success: function (data) {
+                var s = '<option value="-1">Please Select a Site Id</option>';
+                for (var i = 0; i < data.length; i++) {
+                    s += '<option value="' + data[i].siteid + '">' + data[i].sitename + '</option>';
+                }
+                $("#site_id").html(s);
+            }
+        });
+
+
+
+
+
+    });
+
+    $("#site_id").change(function () {
+
+        var siteid = $('#site_id').val();
+
+        $.ajax({
+            type: "GET",
+            url: "/Forms/specimen_view?siteid=" + siteid,
+            data: "",
+            success: function (data) {
+                var s = '<option value="-1">Please Select a Site Id</option>';
+                for (var i = 0; i < data.length; i++) {
+                    s += '<option value="' + data[i].specimen + '">' + data[i].specimen + '</option>';
+                }
+                $("#specimen").html(s);
+            }
+        });
+    });
+
+
+
+    function BtnClick() {
+
+        var siteid = $('#site_id').val();
+
+        var specimen = $('#specimen').val();
+        var obj;
+
+        table = $('#ajax_table').dataTable({
+            destroy: true,
+            processing: true,
+            ordering: true,
+            paging: true,
+
+            ajax: {
+                type: "GET",
+                url: "/Forms/specimen_table?siteid=" + siteid + "&specimen=" + specimen,
+
+            },
+            success: function (row) {
+                id = row.specimen;
+
+            },
+            columns: [
+
+                { "data": "site_id" },
+                { "data": "specimen" },
+                { "data": "datesample" },
+                { "data": "receivedby" },
+                 /* EDIT */ {
+                    mRender: function (data, type, row) {
+
+                        return '<button class="btn btn-primary waves-effect waves-float waves-light"><a class="table-edit text-white" data-id="' + row.specimen + '" href="javascript:void(0)" onclick="chksection1(this)"  >Laboratory & RNA Extraction<i class="fas fa-edit"></i></a></button> <button class="btn btn-success waves-effect waves-float waves-light"><a class="table-edit text-white" data-id="' + row.specimen + '" href="javascript:void(0)" onclick="chksection2(this)"  >Gene<i class="fas fa-edit"></i></a></button> <button class="btn btn-info waves-effect waves-float waves-light"> <a class="table-edit text-white" data-id="' + row.specimen + '" href="javascript:void(0)" onclick="chksection3(this)"  >Processing<i class="fas fa-edit"></i></a></button>'
+                    }
+                }
+
+            ]
+
+
+
+        })
+
+    }
+
+
+    function chksection1(obj) {
+
+        var myId = $(obj).attr('data-id');
+        console.log(myId);
+        if (myId != '' && myId != undefined) {
+            checkidsect1(myId)
+        } else {
+            alert('Error');
+        }
+
+
+
+
+    }
+
+
+    function chksection2(obj) {
+
+        var myId = $(obj).attr('data-id');
+        console.log(myId);
+        if (myId != '' && myId != undefined) {
+            checkidsect2(myId)
+        } else {
+            alert('Error');
+        }
+
+
+
+
+    }
+
+    function chksection3(obj) {
+
+        var myId = $(obj).attr('data-id');
+        console.log(myId);
+        if (myId != '' && myId != undefined) {
+            checkidsect3(myId)
+        } else {
+            alert('Error');
+        }
+
+
+
+
+    }
+
+
+    function checkidsect1(myId) {
+        $.ajax({
+            method: "POST",
+            url: "/Forms/checkspecimen",
+
+            data: {
+
+                specimen: myId
+
+            },
+
+            success: function (response) {
+
+                if (response.status == 0) {
+
+                    window.location.href = '/Forms/molecular_section1_fill?specimen=' + myId;
+                }
+                if (response.status == 1) {
+                    alert(response.responseText);
+
+                }
+
+
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert("Contact Developer Team");
+            }
+
+        })
+
+    }
+
+
+    function checkidsect2(myId) {
+        $.ajax({
+            method: "POST",
+            url: "/Forms/checkspecimen",
+
+            data: {
+
+                specimen: myId
+
+            },
+
+            success: function (response) {
+
+                if (response.status == 0) {
+
+                    window.location.href = '/Forms/molecular_section2_fill?specimen=' + myId;
+                }
+                if (response.status == 1) {
+                    alert(response.responseText);
+
+                }
+
+
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert("Contact Developer Team");
+            }
+
+        })
+
+    }
+
+
+    function checkidsect3(myId) {
+        $.ajax({
+            method: "POST",
+            url: "/Forms/checkspecimen",
+
+            data: {
+
+                specimen: myId
+
+            },
+
+            success: function (response) {
+
+                if (response.status == 0) {
+
+                    window.location.href = '/Forms/molecular_section3_fill?specimen=' + myId;
+                }
+                if (response.status == 1) {
+                    alert(response.responseText);
+
+                }
+
+
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert("Contact Developer Team");
+            }
+
+        })
+
+    }
+
+
+
+</script>
